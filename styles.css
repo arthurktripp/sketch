@@ -1,4 +1,23 @@
 #container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-}
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    height: 800px;
+    width: 800px;
+    background-color: #faf7f0;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  
+  #container > div {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+  .blank {
+    background-color: #faf7f0;
+  }
+  
+  .dark {
+    background-color: #aba8a2;
+  }
