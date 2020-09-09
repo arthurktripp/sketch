@@ -1,3 +1,10 @@
+#top {
+    display: block;
+    width: 751px;
+    background-color: #aba8a2;
+    padding: 25px;
+    }
+
 #container {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -5,13 +12,13 @@
     height: 800px;
     width: 800px;
     background-color: #faf7f0;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid #9c9995;
+    border-bottom: 1px solid #9c9995;
   }
   
   #container > div {
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    border-top: 1px solid #9c9995;
+    border-right: 1px solid #9c9995
   }
   
   .blank {

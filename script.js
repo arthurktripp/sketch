@@ -1,11 +1,11 @@
+// declaring some global variables
 var dimension = 16;
 var totalSquares = dimension * dimension;
 var i = 0;
 
 const container = document.querySelector("#container");
 
-
-
+// builds the grid and gives each pixel basic functionality
 function createPixels() {
     for ( i = 0; i < totalSquares; i++ ) {
         const pixel = document.createElement("div");
@@ -15,9 +15,55 @@ function createPixels() {
             pixel.classList.remove("blank");
             pixel.classList.add("dark");
         })
-
         container.appendChild(pixel);
     }
 }
-
 createPixels();
+
+
+/*
+This will be the code that constructs a reset button.
+It will prompt user for a new dimension, erase the old one and 
+create a new blank grid.
+
+It will need to adjust the CSS, grid-template-columns and ...-rows
+based on the new dimensions.
+
+*/
+
+
+
+const reset = document.getElementById("reset");
+reset.addEventListener("click", function (){
+    container.textContent = "";
+    resetPixels();
+});
+
+
+function resetPixels() {
+    var newDimension = prompt("How many squares wide would you like the new board to be?", "Max 100");
+    if ( newDimension != null && newDimension > 0 && newDimension <= 100 ) {
+        
+        newDimension = Math.floor(newDimension);
+        container.style.gridTemplateColumns = "repeat(" + newDimension + ", 1fr)"
+        container.style.gridTemplateRows = "repeat(" + newDimension + ", 1fr)"
+    
+        totalSquares = newDimension * newDimension;
+    
+        for ( i = 0; i < totalSquares; i++ ) {
+            const pixel = document.createElement("div");
+            pixel.classList.add("blank");
+            pixel.setAttribute("id", i);
+            pixel.addEventListener("mouseover", () => {
+                pixel.classList.remove("blank");
+                pixel.classList.add("dark");
+            })
+            container.appendChild(pixel);
+        }
+    } else {
+        alert("Your new dimension must be a number between 1 and 100");
+        resetPixels();
+    } 
+    
+
+}
